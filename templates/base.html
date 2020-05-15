@@ -11,19 +11,32 @@
     {% endblock%}
     <style>
       nav{
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         position: fixed;
         z-index: 1;
         background-color: rgba(0,0,0,0);
         /* get rid of shadow */
         box-shadow: none!important;
-        pad
+        padding-left: 200px;
+        padding-right: 50px;
       }
       .scrolled {
         background-color: #34164c !important;
         transition: background-color 200ms linear;
-
+        
+      }
+      .alpha-title{
+        font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        font-size: 10pt;
+        display: none;
+        padding: 10px 10px; 
+        display:inline-block;
+        
       }
 
+      .show{
+        display: inline !important;
+      }
       .menu-options{
         font-size: 15pt;
         font-style: italic;
@@ -39,13 +52,20 @@
       .special-link:hover{
       background-color:#fafafa;
       }
+
+      .logo, .nav-wrapper >a
+      {
+        display: none;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif !important;
+      }
     
     </style>
   </head>
   <body>
     <nav>
       <div class="nav-wrapper">
-        <a href="#" class="brand-logo">Logo</a>
+        <img src='/static/logo.png' class="logo" style=" max-height: 64px!important">
+          <a href="#"  class="brand-logo logo"> ĐẤU TRƯỜNG ALPHA </a>
         <ul style="padding-bottom:50;" id="nav-mobile" class="right hide-on-med-and-down">
           <li><a class="menu-options special-link" href="sass.html">Thi</a></li>
           <li><a class="menu-options" href="badges.html">Components</a></li>
@@ -61,6 +81,8 @@
       $(function () {
         $(document).scroll(function () {
           var $nav = $("nav");
+          var $title = $(".logo");
+          $title.toggleClass('show',$(this).scrollTop() > $title.height());
           $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
       });
 });
