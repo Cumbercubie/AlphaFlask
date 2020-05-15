@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
+    {% block head %}
+    {% endblock%}
+    <style>
+      nav{
+        position: fixed;
+        z-index: 1;
+        background-color: rgba(0,0,0,0);
+        /* get rid of shadow */
+        box-shadow: none!important;
+        pad
+      }
+      .scrolled {
+        background-color: #34164c !important;
+        transition: background-color 200ms linear;
+
+      }
+
+      .menu-options{
+        font-size: 15pt;
+        font-style: italic;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }   
+
+      .special-link {
+        display:inline-block;
+        border-radius: 0.12em;;
+        box-sizing: border-box;
+        text-align: center;
+      }
+      .special-link:hover{
+      background-color:#fafafa;
+      }
+    
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo">Logo</a>
+        <ul style="padding-bottom:50;" id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a class="menu-options special-link" href="sass.html">Thi</a></li>
+          <li><a class="menu-options" href="badges.html">Components</a></li>
+          <li><a class="menu-options" href="collapsible.html">JavaScript</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+    
+    <script>
+      $(function () {
+        $(document).scroll(function () {
+          var $nav = $("nav");
+          $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
+      });
+});
+    </script>
+  </body>
