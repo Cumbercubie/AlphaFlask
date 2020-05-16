@@ -8,7 +8,9 @@ app = Flask(__name__)
 # @login_required
 def index():    
     return render_template('index.html')
-
+@app.route('/login')
+def login():
+    return render_template('login.html')
 # @app.route('/register',methods=['GET','POST'])
 # def register():
 #     form = RegistrationForm()
@@ -46,5 +48,11 @@ def index():
 # @app.route('userfunction/register')
 # def getUserData():
 #     return mongodb.querry.All() #json
+
+@app.route('/round-2')
+def round_2():
+    from ExcelDriver import getQuestionsFromFile
+    data = getQuestionsFromFile("static/questions.xlsx",'Sheet1')
+    return render_template('round-2.html',datas=data)
 if __name__ == '__main__':
     app.run(debug=True)
